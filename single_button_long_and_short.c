@@ -1,6 +1,6 @@
 /* USER CODE BEGIN PV */
-_Bool short_state = 0; //для кнопки
-_Bool long_state = 0; //для кнопки
+uint8_t short_state = 0; //для кнопки
+uint8_t long_state = 0; //для кнопки
 uint32_t time_key1 = 0; //для кнопки
 
 uint8_t page = 0; uint8_t selected = 0;
@@ -9,9 +9,9 @@ uint8_t page = 0; uint8_t selected = 0;
 /* USER CODE BEGIN WHILE */
 while (1){
 	uint32_t ms = HAL_GetTick();
-	_Bool key1_state = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
+	uint8_t key1_state = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);//отслеживаемый пин
 	if(key1_state == 0 && !short_state && (ms - time_key1) > 50) {short_state = 1; long_state = 0; time_key1 = ms;}
-    else if(key1_state == 0 && !long_state && (ms - time_key1) > 500){
+    else if(key1_state == 0 && !long_state && (ms - time_key1) > 500){//время длинного нажатия
         long_state = 1;
         //   действие на длинное нажатие
         if          (page == 0)						{page = 1; selected = 1; SSD1306_Clear();}//to menu
