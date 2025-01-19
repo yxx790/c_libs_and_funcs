@@ -3,7 +3,6 @@
 #include <string.h>
 /* USER CODE END Includes */
 
-/* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define FLASH_STORAGE 0x0800FC00            //64 page for stm32f030c8t6
 #define page_size 0x400                     //1 kb
