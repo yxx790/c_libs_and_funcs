@@ -12,7 +12,6 @@
 void erase_flash(void)
 {
 	HAL_FLASH_Unlock();
-//	HAL_FLASH_OB_Unlock();
 	FLASH_EraseInitTypeDef EraseInitStruct;
 	EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;
 	EraseInitStruct.PageAddress = FLASH_STORAGE;
@@ -20,7 +19,6 @@ void erase_flash(void)
 	uint32_t PageError;
 	HAL_FLASHEx_Erase(&EraseInitStruct, &PageError);
 	HAL_FLASH_Lock();
-//	HAL_FLASH_OB_Lock();
 }
 void save_to_flash(uint8_t *data)
 {
